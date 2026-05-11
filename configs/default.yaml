@@ -1,0 +1,66 @@
+﻿seed: 42
+workspace:
+  xlim: [0.0, 1.0]
+  ylim: [0.0, 1.0]
+  resolution: 180
+scenario:
+  name: user_custom_scene
+  hotspots: []
+  obstacles: []
+sim:
+  dt: 0.05
+  horizon: 90
+  max_accel: 3.0
+agents:
+  num_agents: 3
+  initial_states:
+    - [0.08, 0.44, 0.0, 0.0]
+    - [0.08, 0.50, 0.0, 0.0]
+    - [0.08, 0.56, 0.0, 0.0]
+  goal_positions:
+    - [0.92, 0.44]
+    - [0.92, 0.50]
+    - [0.92, 0.56]
+stein:
+  use_coupling: true
+  use_obstacle_mask: true
+  baseline_use_obstacle_mask: true
+  strict_paper: true
+  alpha: 0.03
+  self_bandwidth: 0.008
+  coupling_bandwidth: 0.004
+  gamma: 1.2
+  task_weight: 1.0
+  self_repulsion_weight: 1.0
+optimization:
+  optimizer_mode: line_svgd
+  iterations: 300
+  snapshot_iters: [0, 100, 300]
+  flow_step_size: 0.008
+  traj_smooth_lambda: 0.26
+  fix_line_endpoints: false
+  line_anchor_lambda: 0.0
+  line_anchor_decay: 1.0
+  line_tube_radius: 1.0
+  max_particle_step: 1.0
+  trajectory_smooth_passes: 0
+  trajectory_smooth_blend: 0.0
+  enforce_monotonic_progress: false
+  obstacle_margin: 0.085
+  obstacle_barrier_gain: 0.0
+  projection_steps: 0
+  projection_margin_ratio: 0.95
+  flow_smooth_passes: 0
+  max_segment_length: 0.0
+  segment_repair_passes: 0
+  post_smooth_iters: 0
+  post_smooth_lambda: 0.0
+  kp: 7.5
+  kv: 2.8
+  control_blend: 0.7
+  smooth_alpha: 0.45
+  init_line_kp: 6.0
+  init_line_kv: 2.2
+metrics:
+  fourier_K: 10
+  overlap_sigma: 0.06
